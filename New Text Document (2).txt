@@ -1,0 +1,90 @@
+package filehandling;
+import java.io.File;
+import java.io.FileReader;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.util.Scanner;
+public class Filehandling {
+    
+   static void creatfile()
+    {
+        File file=new File("text.txt");
+        try{
+            file.createNewFile();
+            System.out.println("File Created");         
+        }
+        catch(IOException e)
+        {
+            System.out.println("Cannot creaate File");
+        }
+    }
+static void Writingfile()
+{
+    //Writing in File 
+        try{
+            FileWriter filewr=new FileWriter("text.txt");
+            filewr.write("Science without religion is lame, religion without science is blind.");
+            filewr.close();
+        }
+        catch(IOException e)
+        {
+            System.out.println("Cannot write in File");
+        }
+}
+static void ReadingFile()
+{
+    //Reading From File
+         try{
+            FileReader filer=new FileReader("text.txt");
+            Scanner sc = new Scanner(filer);
+          while (sc.hasNextLine())
+            System.out.println(sc.nextLine());
+filer.close();
+        }
+        catch(IOException e)
+        {
+            System.out.println("Cannot write in File");
+        }
+}
+ static void DeletingFile()
+  {
+       File file=new File("text.txt");
+       if(file.delete())
+       {
+           System.out.println("file is deleted");
+       }
+       else 
+       {
+            System.out.println("file is not deleted");
+       }
+       
+  }
+    public static void main(String[] args) { 
+        int temp;
+        System.out.println("Press 1 for creat file");
+        System.out.println("Press 2 for Write file");
+        System.out.println("Press 3 for Read file");
+        System.out.println("Press 4 for Dleat file");
+        Scanner cin= new Scanner(System.in);
+        temp =cin.nextInt();
+         if(temp==1)
+         {
+             creatfile();
+         }
+         else if(temp==2)
+         {
+             Writingfile();
+         }
+         else if(temp==3)
+         {
+             ReadingFile();
+         }
+         else if(temp==4)
+         {
+             DeletingFile();
+         }
+
+
+    }
+    
+}
